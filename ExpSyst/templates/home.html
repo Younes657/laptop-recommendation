@@ -1,0 +1,34 @@
+{%extends 'base.html'%}
+{% block title %}
+    Home Page
+{% endblock %}
+
+{% block content %}
+    <div class="container my-4 p-5" style="background-color: white; border-radius: 20px;">
+        <form method="POST" class="form-register">
+            {{ form.hidden_tag() }}
+            <h1 class="h3 mb-3 fw-bold text-primary">
+                Please Add your Caracteristics
+            </h1>
+            <br>
+            {{ form.selectProcessor.label(class="pb-2") }}
+            {{ form.selectProcessor(class="form-select form-select-lg mb-3" ) }}
+
+            {{ form.selectRam.label(class="pb-2") }}
+            {{ form.selectRam(class="form-select form-select-lg mb-3" ) }}
+
+            {{ form.selectStorage.label(class="pb-2") }}
+            {{ form.selectStorage(class="form-select form-select-lg mb-3" ) }}
+
+            {{ form.selectBattryLife.label(class="pb-2") }}
+            {{ form.selectBattryLife(class="form-select form-select-lg mb-3" ) }}
+
+            {{ form.selectBudget.label(class="pb-2") }}
+            {{ form.selectBudget(class="form-select form-select-lg mb-3" ) }}
+            <br>
+
+            {{ form.submit(class="btn btn-primary form-control") }}
+
+        </form>
+    </div>
+{% endblock %}

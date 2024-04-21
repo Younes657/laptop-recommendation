@@ -1,0 +1,42 @@
+{%extends 'base.html'%}
+{% block title %}
+Home Page
+{% endblock %}
+
+{% block content %}
+<div class="container row p-3" style="background-color: white; border-radius: 20px;">
+
+{% for laptop in laptops %}
+    <div className="col-lg-4 col-md-6 col-12 g-5">
+        <div className="card" style="box-shadow: 0 1px 7px 0 rgb(0 0 0 / 50%)">
+            <div className=" card-body">
+                <div className="card-header" style="
+                    padding: 0;
+                    background-color: white;
+                    border: none;
+                  ">
+                    
+                </div>
+                <img className=" card-img w-100 p-4" src="{{laptop.Image_Link}}" alt="Not_fetched" style= "border-radius: 20px;" />
+                
+                <div className=" card-contennt text-center">
+                    <h3 className="card-title text-success">
+                        <span class="d-block">{{laptop.model}}</span>
+                        <span>{{laptop.brand}}</span>
+                    </h3>
+                    <p className="card-text" style="font-size:12px;">
+                        <span>Processor : </span>
+                        <span>{{laptop.processor_type}} {{" "}}{{laptop.generation}}</span>
+                    </p>
+                    <p className="card-text" style="font-size:12px;">
+                        <span>Ram Size : </span>
+                        <span>{{laptop.ram_size}} </span>
+                    </p>
+                    <h5 className="card-subtitle">{{laptop.price}} DA</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}
