@@ -1,0 +1,63 @@
+{%extends 'base.html'%}
+{% block title %}
+Laptop Details Page
+{% endblock %}
+
+{% block content %}
+<div class="container-lg container-fluid">
+    <div class="card shadow border-0 m-4">
+        <div class="card-header bg-primary  text-white py-4">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h3 class="text-white text-uppercase">{{laptop.model}}</h3>
+                    <p class="text-white text-uppercase fw-semibold mb-0">{{laptop.brand}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="py-3">
+                <div class="row">
+                    <div class="col-12 col-lg-3 offset-lg-2 text-center mb-3">
+                        <img src="{{laptop.image_link}}" width="100%"  />
+                    </div>
+                    <div class="col-12 col-lg-4 offset-lg-1">
+                        <div class="row ps-2">
+                            <h6 class="  ">Processor : <span class="ps-3" style="color: #aaa;">{{laptop.processor_type}} {{" "}} {{laptop.generation}}</span></h6>
+                        </div>
+                        <div class="row ps-2">
+                            <h6 class=" ">Ram : <span class="ps-2" style="color: #aaa;"> {{laptop.ram_size}}</span> </h6>
+                        </div>
+                        <div class="row ps-2">
+                            <h6 class=" ">Storage Type : <span class="ps-3" style="color: #aaa;">{{laptop.storage_type}}</span> </h6>
+                        </div>
+                        <div class="row ps-2">
+                            <h6 class=" ">Storage Capacity : <span class="ps-3" style="color: #aaa;">{{laptop.storage_capacity}}</span> </h6>
+                        </div>
+                        <div class="row ps-2">
+                            <h6 class=" ">Graphics Card : <span class="ps-3" style="color: #aaa;">{{laptop.graphics_card}}</span> </h6>
+                        </div>
+                        <div class="row ps-2">
+                            <h6 class=" ">Battry Life : <span class="ps-3" style="color: #aaa;">{{laptop.battery_life}}</span> </h6>
+                        </div>
+                        <div class="row ps-2">
+                            <h6 class=" "> Display Size : <span class="ps-3" style="color: #aaa;">{{laptop.display_size}}</span> </h6>
+                        </div>
+                        <div class="row ps-2 mb-3">
+                            <h6 class=" ">Price : <span class="text-danger ps-3">{{laptop.price}} DA</span> </h6>
+                        </div>
+                        <div class="row">
+                            <div class="col-12  pb-1">
+                                <a href="/laptops"
+                                    class="btn btn-primary bg-gradient form-control w-100 py-2  fw-semibold">
+                                    Back to List
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,42 +1,38 @@
 {%extends 'base.html'%}
 {% block title %}
-Home Page
+Laptops Page
 {% endblock %}
 
 {% block content %}
-<div class="container row p-3" style="background-color: white; border-radius: 20px;">
-
-{% for laptop in laptops %}
-    <div className="col-lg-4 col-md-6 col-12 g-5">
-        <div className="card" style="box-shadow: 0 1px 7px 0 rgb(0 0 0 / 50%)">
-            <div className=" card-body">
-                <div className="card-header" style="
-                    padding: 0;
-                    background-color: white;
-                    border: none;
-                  ">
-                    
-                </div>
-                <img className=" card-img w-100 p-4" src="{{laptop.Image_Link}}" alt="Not_fetched" style= "border-radius: 20px;" />
-                
-                <div className=" card-contennt text-center">
-                    <h3 className="card-title text-success">
-                        <span class="d-block">{{laptop.model}}</span>
-                        <span>{{laptop.brand}}</span>
-                    </h3>
-                    <p className="card-text" style="font-size:12px;">
-                        <span>Processor : </span>
-                        <span>{{laptop.processor_type}} {{" "}}{{laptop.generation}}</span>
-                    </p>
-                    <p className="card-text" style="font-size:12px;">
-                        <span>Ram Size : </span>
-                        <span>{{laptop.ram_size}} </span>
-                    </p>
-                    <h5 className="card-subtitle">{{laptop.price}} DA</h5>
+<div class="container  my-3" style="border-radius: 20px;">
+    <div class="row">
+        {% for laptop in laptops %}
+        <div class="col-lg-4 col-md-6 col-12 g-4">
+            <div class="card border-primary p-1 rounded-3"
+                style="box-shadow: 0 3px 7px 0 rgb(0 0 0 / 20%) ; background-color: white; border-top: 4px solid;">
+                <div class=" card-body d-flex flex-column justify-content-around">
+                    <img class=" card-img w-100" src="{{laptop.image_link}}" alt="Not_fetched"
+                        style="height: 300px; aspect-ratio: 285 / 300;" />
+                    <div class=" card-contennt text-center">
+                        <h4 class="card-title text-primary">
+                            <span class="d-block">{{laptop.model}}</span>
+                            <span>{{laptop.brand}}</span>
+                        </h4>
+                        <p class="card-text p-0 m-0">
+                            <span class="fw-bold">Processor : </span>
+                            <span>{{laptop.processor_type}} {{" "}}{{laptop.generation}}</span>
+                        </p>
+                        <p class="card-text p-0 m-0">
+                            <span class="fw-bold">Ram Size : </span>
+                            <span>{{laptop.ram_size}} </span>
+                        </p>
+                        <h5 class="card-subtitle fw-bold my-3 text-danger">{{laptop.price}} DA</h5>
+                        <a href="{{ url_for('Laptop_details_page' , lap_id = laptop.id) }}" class="btn btn-primary form-control">Laptop Details</a>
+                    </div>
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div>
-{% endfor %}
 </div>
 {% endblock %}
