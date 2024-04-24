@@ -29,13 +29,15 @@ def home_page():
 
 @app.route("/laptops")
 def Laptops_page():
-    result = session.get("result" , " ") # Retrieve laptops from session, default to empty list if not found
+    result = session.get("result" , "") # Retrieve laptops from session, default to empty list if not found
     # Now you can use laptops in your template or further processing
     if result != "":
         laptopsDb = laptops_filtration(result)
         return render_template('laptops.html' , laptops = laptopsDb , result = result)
     else:
-        return render_template('laptops.html' , laptops = [] , result = "")
+        with app.app_context():
+            laptops = laptop.query.all()
+        return render_template('laptops.html' , laptops = list(laptops) , result = "")
 @app.route('/laptop/<int:lap_id>')
 def Laptop_details_page(lap_id):
     laptopdb = laptop.query.get_or_404(lap_id)

@@ -4,8 +4,18 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container my-4 p-5" style="background-color: white; border-radius: 20px;">
-        <form method="POST" class="form-register">
+    
+    <section class="home-intro">
+        <div class="container">
+            <div class="lanR">
+                <h1>Welcome,To PickupLAPTOP </h1>
+                <a href="#model" class="btn-model">Try Model</a>
+            </div>
+            <div class="landImg"><img src="{{ url_for('static', filename='images/intro-home.png') }}" alt="Younes"></div>
+        </div>
+    </section>
+    <div class="container my-4 p-5" style="background-color: white; border-radius: 20px;" id="model">
+        <form method="POST" class="form-register" >
             {{ form.hidden_tag() }}
             <h1 class="h3 mb-3 fw-bold text-primary">
                 Please Add your Caracteristics

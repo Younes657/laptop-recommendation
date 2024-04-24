@@ -4,7 +4,6 @@ from expert_system import db
 from expert_system.models import laptop
 from expert_system import app
 def laptops_filtration(result):
-    print("2")
     laptops = []
     with app.app_context():
         match result :
@@ -28,7 +27,7 @@ def laptops_filtration(result):
                 laptops1 = []
                 for laptopdb in laptops1db:
                     laptops1.append(laptopdb.to_dict())
-                laptops2db = laptop.query.filter(and_(laptop.processor_type == "i7" , laptop.generation_int.between(10900 , 6000) , laptop.storage_capacity >= 256 , laptop.ram >= 8 , laptop.battery_life.in_(["3H","4H","5H","6H","7H"])  )).all()
+                laptops2db = laptop.query.filter(and_(laptop.processor_type == "i7" , laptop.generation_int <= 10900  , laptop.storage_capacity >= 256 , laptop.ram >= 8 , laptop.battery_life.in_(["3H","4H","5H","6H","7H"])  )).all()
                 laptops2 = []
                 for laptopdb in laptops2db:
                     laptops2.append(laptopdb.to_dict())
@@ -51,7 +50,7 @@ def laptops_filtration(result):
                 laptops1 = []
                 for laptopdb in laptops1db:
                     laptops1.append(laptopdb.to_dict())
-                laptops2db = laptop.query.filter(and_(laptop.processor_type == "i3" , laptop.generation_int.between(10900 , 7000) , laptop.storage_capacity >= 256 , laptop.ram >= 4 , laptop.battery_life.in_(["3H","4H","5H","6H","7H"])  )).all()
+                laptops2db = laptop.query.filter(and_(laptop.processor_type == "i3" , laptop.generation_int <= 10900  , laptop.storage_capacity >= 256 , laptop.ram >= 4 , laptop.battery_life.in_(["3H","4H","5H","6H","7H"])  )).all()
                 laptops2 = []
                 for laptopdb in laptops2db:
                     laptops2.append(laptopdb.to_dict())

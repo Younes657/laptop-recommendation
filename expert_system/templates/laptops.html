@@ -4,18 +4,21 @@ Laptops Page
 {% endblock %}
 
 {% block content %}
+
 <div class="container  my-3" style="border-radius: 20px;">
+    {% if result != "" %}
     <div class=" bg-white p-3 shadow">
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-lg-6 col-12 ">
                 <span class="text-primary pl-3">Your Laptop Performance Is : </span>
                 <span class="text-uppercase fw-bold ">{{result[7:-1]}}</span>
             </div>
             <div class="col-lg-6 col-12 d-flex justify-content-end">
-                <a class="btn btn-outline-primary p-2" href="{{ url_for('home_page')}}" >Bach to Home</a>
+                <a class="btn btn-outline-primary p-2" href="{{ url_for('home_page')}}" >Back to Home</a>
             </div>
         </div>
     </div>
+    {% endif %}
     <div class="row">
         {% for laptop in laptops %}
         <div class="col-lg-4 col-md-6 col-12 g-4">

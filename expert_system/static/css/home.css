@@ -1,0 +1,71 @@
+.home-intro {
+    background-color: #2196f3;
+    clip-path: polygon(0 0, 100% 0, 100% 73%, 0 93%);
+    height: calc(100vh - 60px);
+    z-index: -1;
+    box-shadow: 0 2px 10px 3px #00000034 inset;
+}
+.home-intro .container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  justify-content: space-between;
+}
+.home-intro .container .landImg {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.home-intro .landImg img {
+  width: 100%;
+  aspect-ratio: 30 / 19;
+  margin-bottom: 100px;
+  animation-name: up-down;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.home-intro .lanR {
+  width: 47%;
+  margin-bottom: 100px;
+  color:white
+  /* we can use flex 1 so the two part img will not be bigger than the text */
+}
+.home-intro .lanR h1 {
+  font-size: 40px;
+  font-weight: bolder;
+  letter-spacing: -2px;
+}
+.home-intro .lanR p {
+  font-size: 20px;
+  line-height: 1.7;
+}
+
+@keyframes up-down {
+    0%,
+    100% {
+      transform: translateY(-50px);
+    }
+    50% {
+      transform: translateY(0px);
+    }
+  }
+
+.btn-model{
+    display:block;
+    text-align:center;
+    width:75%;
+    background-color:white;
+    color: #2196f3;
+    text-decoration:none;
+    padding-block:7px;
+    border-radius:8px;
+    margin-top: 30px;
+    transition:0.4s;
+}
+.btn-model:hover{
+    background-color: #008cfe;
+    color: white;
+}
