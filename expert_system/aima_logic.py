@@ -14,6 +14,8 @@ def get_sysExpert_result(cart):
     kb.tell(expr('Processor(High) & Ram(Medium) &  Storage(Medium) & BattryLife(Medium) &  Budget(luxury) ==> Laptop(AlmostHigh)'))
     kb.tell(expr('Processor(High) & Ram(Medium) &  Storage(Short) & BattryLife(x) &  Budget(luxury) ==> Laptop(AlmostHigh)'))
     kb.tell(expr('Processor(High) & Ram(Medium) &  Storage(Short) & BattryLife(x) &  Budget(Moderate) ==> Laptop(Medium)'))
+    kb.tell(expr('Processor(High) & Ram(Medium) &  Storage(Large) & BattryLife(x) &  Budget(Moderate) ==> Laptop(AlmostHigh)'))#
+    
 
     kb.tell(expr('Processor(Medium) & Ram(High) & Storage(Large) & BattryLife(Long) & Budget(Luxury) ==> Laptop(High)'))
     kb.tell(expr('Processor(Medium) & Ram(High) & Storage(Large) & BattryLife(Medium) & Budget(Luxury) ==> Laptop(High)'))
@@ -26,7 +28,7 @@ def get_sysExpert_result(cart):
     kb.tell(expr('Processor(Medium) & Ram(Meduim) & Storage(Meduim) & BattryLife(x)  & Budget(Economic) ==> Laptop(AlmostLow)'))
     kb.tell(expr('Processor(Medium) & Ram(Meduim) & Storage(Small)  & BattryLife(x) & Budget(Economic) ==> Laptop(AlmostLow)'))
 
-    kb.tell(expr('Processor(Medium) & Ram(Low) & Storage(Large) & BattryLife(x)) & Budget(Moderate) ==> Laptop(Medium)'))
+    kb.tell(expr('Processor(Medium) & Ram(Low) & Storage(Large) & BattryLife(x) & Budget(Moderate) ==> Laptop(Medium)'))
     kb.tell(expr('Processor(Medium) & Ram(Low) & Storage(Medium) & BattryLife(x) & Budget(Economic) ==> Laptop(AlmostLow)'))
     kb.tell(expr('Processor(Medium) & Ram(Low) & Storage(x) & BattryLife(x) & Budget(Moderate) ==> Laptop(AlmostLow)'))
 
@@ -119,7 +121,7 @@ def get_sysExpert_result(cart):
                 del memory[expr('BattryLife(Medium)')]
             else:
                 del memory[expr('BattryLife(Short)')]
-            del memory[expr('Budget(luxury)')]
+            del memory[expr('Budget(Luxury)')]
             agenda.append(expr('Laptop(High)'))
 
 #     kb.tell(expr('Processor(High) & Ram(Medium) &  Storage(Medium) & BattryLife(Long) &  Budget(Moderate) ==> Laptop(AlmostHigh)'))
@@ -135,7 +137,7 @@ def get_sysExpert_result(cart):
             if memory.get(expr('Budget(Moderate)'), False) == True:
                 del memory[expr('Budget(Moderate)')]
             else:
-                del memory[expr('Budget(luxury)')]
+                del memory[expr('Budget(Luxury)')]
             agenda.append(expr('Laptop(AlmostHigh)'))
 
 #  kb.tell(expr('Processor(High) & Ram(Medium) &  Storage(Short) & BattryLife(x) &  Budget(luxury) ==> Laptop(AlmostHigh)'))
@@ -149,7 +151,7 @@ def get_sysExpert_result(cart):
                 del memory[expr('BattryLife(Medium)')]
             else:
                 del memory[expr('BattryLife(Short)')]
-            del memory[expr('Budget(luxury)')]
+            del memory[expr('Budget(Luxury)')]
             agenda.append(expr('Laptop(AlmostHigh)'))
 #     kb.tell(expr('Processor(High) & Ram(Medium) &  Storage(Short) & BattryLife(x) &  Budget(Moderate) ==> Laptop(Medium)'))
         if memory.get(expr('Processor(High)'), False) and memory.get(expr('Ram(Medium)'), False) and memory.get(expr('Storage(Short)'), False) and (memory.get(expr('BattryLife(Medium)')) or memory.get(expr('BattryLife(Long)')) or memory.get(expr('BattryLife(Short)'))) and memory.get(expr('Budget(Moderate)'), False):
@@ -164,12 +166,24 @@ def get_sysExpert_result(cart):
                 del memory[expr('BattryLife(Short)')]
             del memory[expr('Budget(Moderate)')]
             agenda.append(expr('Laptop(Medium)'))
-
+ #       kb.tell(expr('Processor(High) & Ram(Medium) &  Storage(Large) & BattryLife(x) &  Budget(Moderate) ==> Laptop(AlmostHigh)'))#
+        if memory.get(expr('Processor(High)'), False) and memory.get(expr('Ram(Medium)'), False) and memory.get(expr('Storage(Large)'), False) and memory.get(expr('Budget(Moderate)'), False):
+                del memory[expr('Processor(High)')]
+                del memory[expr('Ram(Medium)')]
+                del memory[expr('Storage(Large)')]
+                if memory.get(expr('BattryLife(Long)'), False) == True:
+                    del memory[expr('BattryLife(Long)')]
+                elif memory.get(expr('BattryLife(Medium)'), False) == True:
+                    del memory[expr('BattryLife(Medium)')]
+                else:
+                    del memory[expr('BattryLife(Short)')]
+                del memory[expr('Budget(Moderate)')]
+                agenda.append(expr('Laptop(AlmostHigh)'))
 
     # kb.tell(expr('Processor(Medium) & Ram(High) & Storage(Large) & BattryLife(Long) & Budget(Luxury) ==> Laptop(High)'))
     # kb.tell(expr('Processor(Medium) & Ram(High) & Storage(Large) & BattryLife(Medium) & Budget(Luxury) ==> Laptop(High)'))
 
-        if memory.get(expr('Processor(Medium)'), False) and memory.get(expr('Ram(High)'), False) and memory.get(expr('Storage(Large)'), False) and (memory.get(expr('BattryLife(Long)'), False) or (memory.get(expr('BattryLife(Medium)'), False) and memory.get(expr('Budget(Luxury)'), False))):
+        if memory.get(expr('Processor(Medium)'), False) and memory.get(expr('Ram(High)'), False) and memory.get(expr('Storage(Large)'), False) and (memory.get(expr('BattryLife(Long)'), False) or memory.get(expr('BattryLife(Medium)'), False)) and memory.get(expr('Budget(Luxury)'), False):
             del memory[expr('Processor(Medium)')]
             del memory[expr('Ram(High)')]
             del memory[expr('Storage(Large)')]
@@ -284,7 +298,7 @@ def get_sysExpert_result(cart):
             else:
                 del memory[expr('BattryLife(Short)')]
             if memory.get(expr('Budget(Economic)'), False) == True:
-                del memory[expr('Budget(Economic))')]
+                del memory[expr('Budget(Economic)')]
             else :
                 del memory[expr('Budget(Moderate)')]
             agenda.append(expr('Laptop(AlmostLow)'))
@@ -347,7 +361,19 @@ def get_sysExpert_result(cart):
             del memory[expr('Budget(Moderate)')]
             agenda.append(expr('Laptop(AlmostLow)'))
 
+    if memory.get(expr(f'Processor({cart.Processor})'),False) == True:
+        del memory[expr(f'Processor({cart.Processor})')]
+        del memory[expr(f'Ram({cart.Ram})')]
+        del memory[expr(f'Storage({cart.Storage})')]
+        del memory[expr(f'BattryLife({cart.BattryLife})')]
+        del memory[expr(f'Budget({cart.Budget})')]
+
     print('Final diagnosis:')
+    final = ""
     for p, value in memory.items():
         if value:
-            print(f'{p}') 
+            print(p)
+            final = p
+            break
+    return final
+            

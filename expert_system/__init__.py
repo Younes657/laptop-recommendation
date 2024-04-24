@@ -7,4 +7,4 @@ app.config['SECRET_KEY'] = 'ec9439cfc6c796ae2029594d'
 
 db = SQLAlchemy(app)
 
-from ExpSyst import routes
+from expert_system import routes

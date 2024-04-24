@@ -1,4 +1,5 @@
-from ExpSyst import db
+from expert_system import db
+
 
 class Cart:
     def __init__(self, Processor, Ram , Storage , BattryLife , Budget):
@@ -21,6 +22,8 @@ class laptop(db.Model):
     graphics_card = db.Column(db.String(length=100), nullable=True)
     battery_life = db.Column(db.String(length=100), nullable=True)
     price = db.Column(db.Numeric(20, 2), nullable=False)
+    generation_int = db.Column(db.Integer() , nullable = True)
+    ram = db.Column(db.Integer() , nullable = True)
     image_link = db.Column(db.String(length=255), nullable=True)
     def __repr__(self):
         return f'Item {self.brand}'
@@ -38,8 +41,12 @@ class laptop(db.Model):
             'graphics_card' : self.graphics_card,
             'battery_life' : self.battery_life,
             'price' :self.price,
+            'generation_int' :self.generation_int,
+            'ram' :self.ram,
             'image_link' :self.image_link
         }
+
+
 
 # CREATE TABLE Laptop (
 #     ID SERIAL PRIMARY KEY,
